@@ -5,12 +5,22 @@ package com.timeline.model;
  */
 public class Admin {
 
+    private int id;
     private String mail;
     private String password;
 
-    public Admin(String mail, String password) {
+    public Admin(int id, String mail, String password) {
+        this.id = id;
         this.mail = mail;
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMail() {
