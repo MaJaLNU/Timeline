@@ -13,12 +13,12 @@ public class Movie {
     private String picture;
     private double rating;
     private Date release;
-    private Date length;
+    private String length;
     private String director;
     private String youtube;
     private String description;
 
-    public Movie(int id, String title, String picture, double rating, Date release, Date length, String director, String youtube, String description) {
+    public Movie(int id, String title, String picture, double rating, Date release, String length, String director, String youtube, String description) {
         this.id = id;
         this.title = title;
         this.picture = picture;
@@ -29,6 +29,8 @@ public class Movie {
         this.youtube = youtube;
         this.description = description;
     }
+
+    public  Movie(){}
 
     public int getId() {
         return id;
@@ -70,11 +72,11 @@ public class Movie {
         this.release = release;
     }
 
-    public Date getLength() {
+    public String getLength() {
         return length;
     }
 
-    public void setLength(Date length) {
+    public void setLength(String length) {
         this.length = length;
     }
 
