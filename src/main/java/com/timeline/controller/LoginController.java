@@ -20,7 +20,7 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLoginForm() {
-        return "login";
+        return "WEB-INF/pages/login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -29,7 +29,7 @@ public class LoginController {
 
         if (admin == null) {
             model.addAttribute("loginError", "Login error. Pleas try again.");
-            return "login";
+            return "WEB-INF/pages/login";
         }
         return "redirect:/";
     }

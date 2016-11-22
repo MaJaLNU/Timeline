@@ -9,6 +9,5 @@ import java.util.List;
  */
 public interface AdminDAO {
     Admin findAdmin(int id);
-
     List<Admin> getAllAdmins();
 }
