@@ -1,7 +1,7 @@
 package com.timeline.controller;
 
 import com.timeline.model.Admin;
-import com.timeline.utils.AdminService;
+import com.timeline.utils.admin.AdminService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

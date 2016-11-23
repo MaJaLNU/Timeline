@@ -1,16 +1,17 @@
-package com.timeline.utils;
+package com.timeline.utils.admin;
 
 import com.timeline.interfaces.AdminDAO;
 import com.timeline.model.Admin;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by damma on 19.11.2016.
  */
 
+@Service
 public class AdminService {
 
-    @Autowired
+    //@Autowired
     AdminDAO adminDao;
 
     public AdminService() {
