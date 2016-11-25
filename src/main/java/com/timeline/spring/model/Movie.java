@@ -1,4 +1,4 @@
-package com.timeline.model;
+package com.timeline.spring.model;
 
 
 import java.sql.Date;
@@ -8,22 +8,22 @@ import java.sql.Date;
  */
 public class Movie {
 
-    private int id;
+    private long id;
     private String title;
-    private String picture;
+    private String image;
     private double rating;
-    private Date release;
+    private Date releasedate;
     private String length;
     private String director;
     private String youtube;
     private String description;
 
-    public Movie(int id, String title, String picture, double rating, Date release, String length, String director, String youtube, String description) {
+    public Movie(long id, String title, String picture, double rating, Date release, String length, String director, String youtube, String description) {
         this.id = id;
         this.title = title;
-        this.picture = picture;
+        this.image = picture;
         this.rating = rating;
-        this.release = release;
+        this.releasedate = release;
         this.length = length;
         this.director = director;
         this.youtube = youtube;
@@ -32,11 +32,11 @@ public class Movie {
 
     public  Movie(){}
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -48,12 +48,12 @@ public class Movie {
         this.title = title;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getImage() {
+        return image;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public double getRating() {
@@ -64,12 +64,12 @@ public class Movie {
         this.rating = rating;
     }
 
-    public Date getRelease() {
-        return release;
+    public Date getReleasedate() {
+        return releasedate;
     }
 
-    public void setRelease(Date release) {
-        this.release = release;
+    public void setReleasedate(Date releasedate) {
+        this.releasedate = releasedate;
     }
 
     public String getLength() {

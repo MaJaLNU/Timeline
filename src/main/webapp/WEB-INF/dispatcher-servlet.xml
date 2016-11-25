@@ -37,8 +37,7 @@
 
     <! Definition for movieJDBCTemplate bean
     <bean id="movieJDBCTemplate"
-          class="com.timeline.utils.movie.MovieDAOImplement">
-        <property name="dataSource"  ref="dataSource" />
+          class="com.timeline.spring.dao.movie.MovieDAOImpl      <property name="dataSource"  ref="dataSource" />
     </bean>-->
 
 </beans>

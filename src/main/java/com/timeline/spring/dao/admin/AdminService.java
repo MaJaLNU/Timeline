@@ -1,7 +1,6 @@
-package com.timeline.utils.admin;
+package com.timeline.spring.dao.admin;
 
-import com.timeline.interfaces.AdminDAO;
-import com.timeline.model.Admin;
+import com.timeline.spring.model.Admin;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,12 +17,12 @@ public class AdminService {
         adminDao = new AdminDAOImplement();
     }
 
-    public Admin findAdminById(int id) {
-        return adminDao.findAdmin(id);
+    public Admin findAdminByMail(String mail) {
+        return adminDao.findAdmin(mail);
     }
 
-    public Admin loginAdmin(int id, String password) {
-        Admin admin = this.findAdminById(id);
+    public Admin loginAdmin(String mail, String password) {
+        Admin admin = this.findAdminByMail(mail);
         if (admin != null && admin.getPassword().equals(password)) {
             return admin;
         }

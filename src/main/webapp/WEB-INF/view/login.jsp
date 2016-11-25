@@ -15,9 +15,9 @@
 <div class="container">
     ${loginError}
     <div>
-        <form action="login" method="post">
+        <form action="../view/dashboard.jsp" method="post">
             <div>
-                <label>Admin mail:</label>
+                <label>Admin email:</label>
                 <input type="text" id="adminMail" name="adminMail" placeholder="Admin Mail" class="form-control"/>
             </div>
             <div>

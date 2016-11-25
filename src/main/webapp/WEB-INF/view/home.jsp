@@ -48,7 +48,18 @@
                     aria-expanded="false" aria-controls="navbar">
             </button>
             <a class="navbar-brand" href="#">StarWars Timeline</a>
-            <a href="#" type="button" class="btn btn-link navbar-btn pull-right">Login</a>
+
+            <%--      <c:choose>
+                      <c:when test="${pageContext.request.lists != null}">
+                          <h2>Admin : ${pageContext.request.lists} </h2>
+                    <a type="button" class="btn btn-link navbar-btn pull-right" href="javascript:formSubmit()">
+                        Logout</a>
+                </c:when>
+                <c:otherwise>
+                    <a type="button" class="btn btn-link navbar-btn pull-right" href="../view/dashboard.jsp">
+                        Login</a>
+                </c:otherwise>
+            </c:choose>--%>
         </div>
     </div>
 </nav>
@@ -57,13 +68,12 @@
 
     <div class="starter-template">
         <h1>
-            <c:if test="${not empty lists}">
+            <c:if test="${not empty listMovies}">
                 <ul>
-                    <c:forEach var="listValue" items="${lists}">
-                        <li>${listValue}</li>
+                    <c:forEach var="movie" items="${listMovies}" varStatus="status">
+                        <li>${movie}</li>
                     </c:forEach>
                 </ul>
-
             </c:if>
         </h1>
     </div>
@@ -74,6 +84,11 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script>
+    function formSubmit() {
+        document.getElementById("logoutForm").submit();
+    }
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../../style/js/bootstrap.min.js"></script>
 </body>

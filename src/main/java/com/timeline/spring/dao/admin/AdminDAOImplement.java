@@ -1,7 +1,6 @@
-package com.timeline.utils.admin;
+package com.timeline.spring.dao.admin;
 
-import com.timeline.interfaces.AdminDAO;
-import com.timeline.model.Admin;
+import com.timeline.spring.model.Admin;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -27,8 +26,8 @@ public class AdminDAOImplement implements AdminDAO {
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
 
-    public Admin findAdmin(int id) {
-        String SQL = "select * from admin where id = " + id;
+    public Admin findAdmin(String mail) {
+        String SQL = "select * from admin where mail = " + mail;
 
         return jdbcTemplateObject.query(SQL, new ResultSetExtractor<Admin>() {
             public Admin extractData(ResultSet rs) throws SQLException,
@@ -36,7 +35,7 @@ public class AdminDAOImplement implements AdminDAO {
                 if (rs.next()) {
                     Admin admin = new Admin();
                     admin.setId(rs.getInt("id"));
-                    admin.setMail(rs.getString("mail"));
+                    admin.setEmail(rs.getString("mail"));
                     admin.setPassword(rs.getString("password"));
                     return admin;
                 }

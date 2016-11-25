@@ -1,6 +1,6 @@
 package com.timeline.utils.databaseHelper;
 
-import com.timeline.model.Movie;
+import com.timeline.spring.model.Movie;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

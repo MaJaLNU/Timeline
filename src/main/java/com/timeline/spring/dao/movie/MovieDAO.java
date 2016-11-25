@@ -1,6 +1,6 @@
-package com.timeline.interfaces;
+package com.timeline.spring.dao.movie;
 
-import com.timeline.model.Movie;
+import com.timeline.spring.model.Movie;
 
 import java.util.List;
 
@@ -10,9 +10,8 @@ import java.util.List;
 public interface MovieDAO {
     List<Movie> getAllMovies();
 
-    void deleteMovie(int id);
-
+    void deleteMovie(long id);
     void createMovie(Movie movie);
 
-    void editMovie(int id, Movie movieUpdate);
+    void editMovie(Movie movieUpdate);
 }

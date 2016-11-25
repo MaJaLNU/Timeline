@@ -1,5 +1,7 @@
-package com.timeline.spring;
+package com.timeline.spring.config;
 
+import com.timeline.spring.dao.movie.MovieDAO;
+import com.timeline.spring.dao.movie.MovieDAOImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,19 +20,9 @@ import javax.sql.DataSource;
  */
 
 @Configuration
-@ComponentScan(basePackages = "com.timeline")
+@ComponentScan(basePackages = "com.timeline.spring")
 @EnableWebMvc
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
-
-    @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-    }
 
     @Bean
     public ViewResolver getViewResolver() {
@@ -40,19 +32,29 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/starwarstimeline");
         dataSource.setUsername("root");
-        dataSource.setPassword("");
+        //dataSource.setPassword("");
 
         return dataSource;
     }
 
-    /*@Bean
+    @Bean
     public MovieDAO getMovieDAO() {
-        return new MovieDAOImplement(getDataSource());
-    }*/
+        return new MovieDAOImpl(getDataSource());
+    }
 }

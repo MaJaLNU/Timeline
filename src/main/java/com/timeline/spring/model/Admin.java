@@ -1,37 +1,37 @@
-package com.timeline.model;
+package com.timeline.spring.model;
 
 /**
  * Created by damma on 19.11.2016.
  */
 public class Admin {
 
-    private int id;
-    private String mail;
+    private long id;
+    private String email;
     private String password;
 
     public Admin(int id, String mail, String password) {
         this.id = id;
-        this.mail = mail;
+        this.email = mail;
         this.password = password;
     }
 
     public Admin() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

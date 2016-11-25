@@ -17,7 +17,7 @@
     <div>
         <form action="login" method="post">
             <div>
-                <label>Admin mail:</label>
+                <label>Admin email:</label>
                 <input type="text" id="adminMail" name="adminMail" placeholder="Admin Mail" class="form-control"/>
             </div>
             <div>
