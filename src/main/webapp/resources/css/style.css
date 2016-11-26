@@ -24,9 +24,8 @@ html {
     overflow-y: hidden;
 }
 
-.thumbnail > img {
-    width: 50%;
-    float: left;
+.thumbnail img {
+    width: 100%;
     padding: 29px 9px;
 }
 
@@ -37,4 +36,18 @@ html {
 
 .clear {
     clear: both;
+}
+
+.image-holder {
+    position: relative;
+    width: 50%;
+    float: left;
+}
+
+.trailer-button {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translate(-50%, 0);
+
 }
