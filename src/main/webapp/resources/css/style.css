@@ -1,5 +1,5 @@
 .movie-wrapper {
-    width: 700px;
+    width: 900px;
     padding: 0 120px;
 }
 
@@ -22,4 +22,19 @@ body {
 
 html {
     overflow-y: hidden;
+}
+
+.thumbnail > img {
+    width: 50%;
+    float: left;
+    padding: 29px 9px;
+}
+
+.thumbnail > .caption {
+    width: 50%;
+    float: right;
+}
+
+.clear {
+    clear: both;
 }
