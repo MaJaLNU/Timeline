@@ -35,9 +35,9 @@
     <title>StarWars Timeline</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="../../style/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <!-- Custom styles for this template -->
-    <link href="../../style/starter-template.css" rel="stylesheet">
+    <link href="../../resources/starter-template.css" rel="stylesheet">
 </head>
 <body>
 
@@ -90,6 +90,6 @@
     }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../../style/js/bootstrap.min.js"></script>
+<script src="../../resources/js/bootstrap.min.js"></script>
 </body>
 </html>

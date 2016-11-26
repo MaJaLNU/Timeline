@@ -21,10 +21,10 @@
                 <input type="text" id="adminMail" name="adminMail" placeholder="Admin Mail" class="form-control"/>
             </div>
             <div>
-                <label>Passwordl:</label>
+                <label>Password:</label>
                 <input type="text" id="adminPassword" name="adminPassword" placeholder="Password" class="form-control"/>
             </div>
-            <button id="loginutton" class="form-control">
+            <button id="loginButton" class="form-control">
                 Login
             </button>
         </form>
