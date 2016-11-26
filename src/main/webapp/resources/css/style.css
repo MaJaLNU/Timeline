@@ -1,6 +1,6 @@
 .movie-wrapper {
-    width: 900px;
-    padding: 0 120px;
+    width: 650px;
+    margin: 0 50px;
 }
 
 .test-wide {
@@ -44,10 +44,16 @@ html {
     float: left;
 }
 
-.trailer-button {
+.trailer-button, .trailer-button:active, .trailer-button:visited {
     position: absolute;
     bottom: 45px;
     left: 50%;
     transform: translate(-50%, 0);
+    background-color: rgba(0,0,0,0.7);
+    border-color: #fff;
+}
 
+.trailer-button:hover, .trailer-button:focus {
+    background-color: #000;
+    border-color: #333;
 }
