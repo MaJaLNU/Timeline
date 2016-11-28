@@ -47,7 +47,7 @@
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                     aria-expanded="false" aria-controls="navbar">
             </button>
-            <a class="navbar-brand" href="#">StarWars Timeline</a>
+            <a class="navbar-brand" href="/WEB-INF/view/test.html">StarWars Timeline</a>
 
             <%--      <c:choose>
                       <c:when test="${pageContext.request.lists != null}">
@@ -71,7 +71,7 @@
             <c:if test="${not empty listMovies}">
                 <ul>
                     <c:forEach var="movie" items="${listMovies}" varStatus="status">
-                        <li>${movie}</li>
+                        <li>${movie.title}</li>
                     </c:forEach>
                 </ul>
             </c:if>

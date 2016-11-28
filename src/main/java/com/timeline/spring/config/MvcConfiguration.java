@@ -46,12 +46,13 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/starwarstimeline");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/starwarstimeline?useLegacyDatetimeCode=false&serverTimezone=MET");
         dataSource.setUsername("root");
         //dataSource.setPassword("");
 
         return dataSource;
     }
+
 
     @Bean
     public MovieDAO getMovieDAO() {

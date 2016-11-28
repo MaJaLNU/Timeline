@@ -1,6 +1,8 @@
 package com.timeline.spring.model;
 
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 import java.sql.Date;
 
 /**
@@ -31,6 +33,11 @@ public class Movie {
     }
 
     public  Movie(){}
+
+    @ModelAttribute
+    public Movie movie() {
+        return new Movie();
+    }
 
     public long getId() {
         return id;
