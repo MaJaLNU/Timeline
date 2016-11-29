@@ -124,5 +124,9 @@
     </div>
 </div>
 
+<footer class="navbar-fixed-bottom">
+    <%@include file="../snippet/footer.jspf" %>
+</footer>
+
 </body>
 </html>

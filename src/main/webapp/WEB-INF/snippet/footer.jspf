@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul class="list-inline">
+                <li><a target="_blank" href="https://github.com/MaJaLNU/Timeline"><i class="fa fa-2x fa-github"></i></a>
+                </li>
+            </ul>
+            <p class="copyright text-muted small">&copy; 2016 LNU</p>
+        </div>
+    </div>
+</div>
