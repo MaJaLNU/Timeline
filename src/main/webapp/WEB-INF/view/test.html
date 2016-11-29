@@ -31,12 +31,12 @@
     <!-- scripts for vertical scrolling -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript">
-        var doScroll = function(e) {
+        var doScroll = function (e) {
 
             e = window.event || e;
             var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 
-            var widthOfOneFilm = document.getElementsByClassName("row")[0].clientWidth;
+            var widthOfOneFilm = $(".row")[0].clientWidth;
             window.scrollBy(-delta * widthOfOneFilm, 0);
             e.preventDefault();
         };
@@ -51,17 +51,16 @@
 
     <!-- script for aligning the timeline elements vertically centered -->
     <script type="text/javascript">
-        $( document ).ready(function() {
+        $(document).ready(function () {
             resize();
         });
-        function resize()
-        {
-            var navbarHeight = document.getElementsByClassName("navbar")[0].clientHeight;
-            document.getElementsByClassName("test-wide")[0].style.height = (window.innerHeight - navbarHeight) + "px";
+        function resize() {
+            var navbarHeight = $(".navbar")[0].clientHeight;
+            $(".test-wide")[0].style.height = (window.innerHeight - navbarHeight) + "px";
 
-            document.getElementsByClassName("timeline")[0].style.paddingTop = navbarHeight + "px";
+            $(".timeline")[0].style.paddingTop = navbarHeight + "px";
         }
-        window.onresize = function() {
+        window.onresize = function () {
             resize();
         };
     </script>
@@ -71,7 +70,7 @@
         TODO: needs to be adjusted to handle multiple videos!
     -->
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {
             /* Get iframe src attribute value i.e. YouTube video url
              and store it in a variable */
             var url = $("#trailer-1").attr('src');
@@ -79,13 +78,13 @@
             /* Assign empty url value to the iframe src attribute when
              modal hide, which stop the video playing */
             var myModal = $("#myModal");
-            myModal.on('hide.bs.modal', function(){
+            myModal.on('hide.bs.modal', function () {
                 $("#trailer-1").attr('src', '');
             });
 
             /* Assign the initially stored url back to the iframe src
              attribute when modal is displayed again */
-            myModal.on('show.bs.modal', function(){
+            myModal.on('show.bs.modal', function () {
                 $("#trailer-1").attr('src', url);
             });
         });
@@ -114,7 +113,8 @@
             <div class="thumbnail">
                 <div class="image-holder">
                     <img src="../../resources/movie1.jpg" alt="...">
-                    <button type="button" class="btn btn-primary trailer-button" data-toggle="modal" data-target="#myModal">
+                    <button type="button" class="btn btn-primary trailer-button" data-toggle="modal"
+                            data-target="#myModal">
                         Trailer
                     </button>
 
@@ -123,11 +123,14 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title" id="myModalLabel">Youtube Trailer: </h4>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe id="trailer-2" width="560" height="315" src="https://www.youtube.com/embed/sGbxmsDFVnE" frameborder="0" allowfullscreen></iframe>
+                                    <iframe id="trailer-2" width="560" height="315"
+                                            src="https://www.youtube.com/embed/sGbxmsDFVnE" frameborder="0"
+                                            allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -155,7 +158,12 @@
                                 <td>George Lucas</td>
                             </tr>
                         </table>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                            et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+                            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                            diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                            voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -168,7 +176,8 @@
             <div class="thumbnail">
                 <div class="image-holder">
                     <img src="../../resources/movie1.jpg" alt="...">
-                    <button type="button" class="btn btn-primary trailer-button" data-toggle="modal" data-target="#myModal">
+                    <button type="button" class="btn btn-primary trailer-button" data-toggle="modal"
+                            data-target="#myModal">
                         Trailer
                     </button>
 
@@ -177,11 +186,14 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title" id="myModalLabel">Youtube Trailer: </h4>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe id="trailer-1" width="560" height="315" src="https://www.youtube.com/embed/sGbxmsDFVnE" frameborder="0" allowfullscreen></iframe>
+                                    <iframe id="trailer-1" width="560" height="315"
+                                            src="https://www.youtube.com/embed/sGbxmsDFVnE" frameborder="0"
+                                            allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +221,12 @@
                                 <td>George Lucas</td>
                             </tr>
                         </table>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                            et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+                            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+                            diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                            voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -223,7 +240,8 @@
                 <div class="caption">
                     <h3>Thumbnail label</h3>
                     <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
+                                                                                       role="button">Button</a></p>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -236,7 +254,8 @@
                 <div class="caption">
                     <h3>Thumbnail label</h3>
                     <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default"
+                                                                                       role="button">Button</a></p>
                 </div>
                 <div class="clear"></div>
             </div>
