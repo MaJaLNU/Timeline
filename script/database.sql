@@ -48,14 +48,14 @@ CREATE TABLE `movie` (
 -- Daten für Tabelle `movie`
 --
 
-INSERT INTO `movie` (`id`, `title`, `rating`, `releasedate`, `director`, `length`, `youtube`, `description`, `image`)
+INSERT INTO `movie` (`title`, `rating`, `releasedate`, `director`, `length`, `youtube`, `description`, `image`)
 VALUES
-  (1, 'Star Wars I', 7.65, '2006-11-10 00:00:00', 'Malte', 'zweiStunden', 'youtube.com/checkthisout',
+  ('Star Wars I', 7.65, '2006-11-10 00:00:00', 'Malte', 'zweiStunden', 'https://www.youtube.com/watch?v=frdj1zb9sMY',
    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
    'starwars-1.jpg');
-INSERT INTO `movie` (`id`, `title`, `rating`, `releasedate`, `director`, `length`, `youtube`, `description`, `image`)
+INSERT INTO `movie` (`title`, `rating`, `releasedate`, `director`, `length`, `youtube`, `description`, `image`)
 VALUES
-  (2, 'Star Wars II', 7.65, '2006-11-10 00:00:00', 'Jan', 'arsch', 'youtube.com/checkthisout',
+  ('Star Wars II', 7.65, '2006-11-10 00:00:00', 'Jan', 'arsch', 'https://www.youtube.com/watch?v=QfBAN4lz2vA',
    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
    'starwars-1.jpg');
 
