@@ -36,54 +36,31 @@ window.onresize = function () {
 };
 
 
-/* source: http://www.tutorialrepublic.com/codelab.php?topic=faq&file=play-youtube-video-in-bootstrap-modal
- TODO: needs to be adjusted to handle multiple videos!
- */
-
-
+/* source: http://www.tutorialrepublic.com/codelab.php?topic=faq&file=play-youtube-video-in-bootstrap-modal */
 $(document).ready(function () {
-    /* Get iframe src attribute value i.e. YouTube video url
-     and store it in a variable */
-    //var url = $("#trailer-1").attr('src');
-
+    /* Get iframe src attribute value i.e. YouTube video url and store it in a variable */
     var numberOfMovies = $(".row").length;
     var urls = [numberOfMovies];
     for(i = 0; i < numberOfMovies; i++) {
         urls[i] = $("#trailer-" + i).attr('src');
     }
 
-    /* Assign empty url value to the iframe src attribute when
-     modal hide, which stop the video playing */
-    //var myModal = $("#myModal");
-
     var myModals = [numberOfMovies];
     for(j = 0; j < numberOfMovies; j++) {
         myModals[j] = $("#myModal-" + j);
-        window.console&&console.log("modal: " + j);
     }
 
-    for(k = 0; k < numberOfMovies; k++) {
-        myModals[k].on('hide.bs.modal', function () {
-            $("#trailer-" + k).attr('src', '');
-        });
-        window.console&&console.log("set hide modal: " + k);
-        myModals[k].on('show.bs.modal', function () {
-            $("#trailer-" + k).attr('src', urls[k]);
-        });
-        window.console&&console.log("set show modal: " + k);
-    }
-    /*
-    myModal.on('hide.bs.modal', function () {
-        $("#trailer-1").attr('src', '');
-    });
-*/
+    $.each(myModals, function (index) {
+        var idString = "#trailer-" + index;
 
+        // Assign empty url value to the iframe src attribute when modal hide, which stop the video playing
+        $(this).on('hide.bs.modal', function () {
+            $(idString).attr('src', '');
+        });
 
-    /* Assign the initially stored url back to the iframe src
-     attribute when modal is displayed again */
-    /*
-    myModal.on('show.bs.modal', function () {
-        $("#trailer-1").attr('src', url);
+        // Assign stored url value to the iframe src attribute when modal shown
+        $(this).on('show.bs.modal', function () {
+            $(idString).attr('src', urls[index]);
+        });
     });
-    */
 });

@@ -86,7 +86,7 @@
 
                             <!-- Modal -->
                             <div class="modal fade" id="myModal-${status.index}" tabindex="-1" role="dialog"
-                                 aria-labelledby="myModalLabel">
+                                 aria-labelledby="myModalLabel-${status.index}">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -98,7 +98,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <iframe id="trailer-${status.index}" width="560" height="315"
-                                                    src="${movie.youtube}" frameborder="0"
+                                                    src="https://www.youtube.com/embed/${movie.youtube}" frameborder="0"
                                                     allowfullscreen></iframe>
                                         </div>
                                     </div>
@@ -107,7 +107,7 @@
                         </div>
 
                         <div class="caption">
-                            <h3>${movie.title} ${status.index}</h3>
+                            <h3>${movie.title}</h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <tr>
