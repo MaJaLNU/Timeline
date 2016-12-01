@@ -17,9 +17,6 @@ public class MovieDAOImpl implements MovieDAO {
 
     private JdbcTemplate jdbcTemplateObject;
 
-  /*  public MovieDAOImpl() {
-    }*/
-
     public MovieDAOImpl(DataSource dataSource) {
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }

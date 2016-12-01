@@ -26,13 +26,8 @@ public class DashboardController {
         ModelAndView model = new ModelAndView();
         //Get movies from db
         List<Movie> listMovies = movieDAO.getAllMovies();
-        //System.out.println("Liste aus db: " + listMovies.toString());
         model.addObject("listMovies", listMovies);
         model.setViewName("dashboard");
-
-        //List<String> list = getList();
-        //model.addObject("listMovies", list);
-        //System.out.println(list);
 
         return model;
     }

@@ -1,8 +1,11 @@
 package com.timeline.spring.model;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by damma on 19.11.2016.
  */
+@Component
 public class Admin {
 
     private long id;

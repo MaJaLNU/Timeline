@@ -5,10 +5,7 @@
   Time: 09:28
   To change this template use File | Settings | File Templates.
 --%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,7 +15,6 @@
     <title>Dashboard</title>
 
     <link href="${pageContext.request.contextPath}/resources/css/style-dashboard.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/dashboard.js"></script>
 </head>
 <body>
@@ -34,7 +30,8 @@
 
             <c:if test="${not empty listMovies}">
                 <c:forEach var="movie" items="${listMovies}" varStatus="status">
-                    <a href="${pageContext.request.contextPath}/dashboard/${movie.id}" class="list-group-item">${movie.title}</a>
+                    <a href="${pageContext.request.contextPath}/dashboard/${movie.id}"
+                       class="list-group-item">${movie.title}</a>
                 </c:forEach>
             </c:if>
         </div>
@@ -100,6 +97,10 @@
         <button type="button" class="btn btn-danger delete-movie-btn">Delete movie</button>
     </div>
 </div>
+
+<footer class="navbar-fixed-bottom">
+    <%@include file="../snippet/footer.jspf" %>
+</footer>
 
 </body>
 </html>

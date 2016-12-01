@@ -5,95 +5,16 @@
   Time: 15:10
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
 <head>
 
     <%@include file="../snippet/head.jspf" %>
 
-    <title>Login</title>
+    <link href="${pageContext.request.contextPath}/resources/css/style-login.css" rel="stylesheet">
 
-    <style>
-        .form-signin {
-            max-width: 330px;
-            padding: 15px;
-            margin: 0 auto;
-        }
+    <title>Login - Timeline</title>
 
-        .form-signin .form-signin-heading, .form-signin {
-            margin-bottom: 10px;
-        }
-
-        .form-signin .checkbox {
-            font-weight: normal;
-        }
-
-        .form-signin .form-control {
-            position: relative;
-            font-size: 16px;
-            height: auto;
-            padding: 10px;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        .form-signin .form-control:focus {
-            z-index: 2;
-        }
-
-        .form-signin input[type="text"] {
-            margin-bottom: -1px;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-
-        .form-signin input[type="password"] {
-            margin-bottom: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-
-        .account-wall {
-            margin-top: 20px;
-            padding: 40px 0px 20px 0px;
-            background-color: #f7f7f7;
-            -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .login-title {
-            color: #555;
-            font-size: 18px;
-            font-weight: 400;
-            display: block;
-        }
-
-        .profile-img {
-            width: 96px;
-            height: 96px;
-            margin: 0 auto 10px;
-            display: block;
-            -moz-border-radius: 50%;
-            -webkit-border-radius: 50%;
-            border-radius: 50%;
-        }
-
-        .new-account {
-            display: block;
-            margin-top: 10px;
-        }
-
-        .vertical-center {
-            min-height: 100%; /* Fallback for browsers do NOT support vh unit */
-            min-height: 100vh; /* These two lines are counted as one :-)       */
-
-            display: flex;
-            align-items: center;
-        }
-    </style>
 </head>
 <body>
 
@@ -110,13 +31,17 @@
                     <img class="profile-img"
                          src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
                          alt="">
-                    <form class="form-signin">
-                        <input type="email" class="form-control" placeholder="Email" required autofocus>
-                        <input type="password" class="form-control" placeholder="Password" required>
+                    <form:form class="form-signin" method="post" action="${pageContext.request.contextPath}/login">
+                        <!-- to display error message from action method if any -->
+                        <form:errors/>
+                        <form:input path="email" type="email" class="form-control" placeholder="Email" required="true"
+                                    autofocus="true"/>
+                        <form:password path="password" class="form-control" placeholder="Password" required="true"/>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">
                             Sign in
                         </button>
-                    </form>
+                    </form:form>
+                    <a href="dashboard.jsp">link</a>
                 </div>
                 <a href="${pageContext.request.contextPath}" class="text-center new-account">Back</a>
             </div>

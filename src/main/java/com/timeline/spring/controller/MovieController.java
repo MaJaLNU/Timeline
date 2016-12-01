@@ -12,37 +12,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 /**
  * Created by damma on 09.11.2016.
  */
 @Controller
-public class HomeController {
+public class MovieController {
 
     @Autowired
     private MovieDAO movieDAO;
 
+    // Display all movies
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getMovieList() throws IOException {
-        System.out.println("IM HomeController - getMovies");
 
         ModelAndView model = new ModelAndView();
         //Get movies from db
         List<Movie> listMovies = movieDAO.getAllMovies();
-        System.out.println("Liste aus db: " + listMovies.toString());
         model.addObject("listMovies", listMovies);
         model.setViewName("home");
-
-        //List<String> list = getList();
-        //model.addObject("listMovies", list);
-        //System.out.println(list);
 
         return model;
     }
 
     //Displaying new movie-from
-    @RequestMapping(value = "/newMovie", method = RequestMethod.POST)
+    @RequestMapping(value = "/dashboard", method = RequestMethod.POST)
     public void newMovie(@ModelAttribute Movie movie, ModelMap model) {
         model.addAttribute("title", movie.getTitle());
         model.addAttribute("description", movie.getDescription());
@@ -53,23 +49,49 @@ public class HomeController {
         model.addAttribute("releasedate", movie.getReleasedate());
         model.addAttribute("youtube", movie.getYoutube());
 
-        System.out.println(movie.getDescription());
         movieDAO.createMovie(movie);
     }
 
-    //inserting movie
+    //inserting or updating movie
     @RequestMapping(value = "/saveMovie", method = RequestMethod.POST)
-    public ModelAndView saveMovie(@ModelAttribute Movie movie) {
-        movieDAO.createMovie(movie);
-        return new ModelAndView("redirect:/");
+    public String saveMovie(@RequestParam("title") String title,
+                            @RequestParam("rating") double rating,
+                            @RequestParam("releasedate") Date releasedate,
+                            @RequestParam("director") String director,
+                            @RequestParam("length") String length,
+                            @RequestParam("youtube") String youtube,
+                            @RequestParam("description") String description,
+                            @RequestParam("image") String image,
+                            ModelMap modelMap) {
+
+        modelMap.addAttribute("title", title);
+        modelMap.addAttribute("description", description);
+        modelMap.addAttribute("director", director);
+        modelMap.addAttribute("image", image);
+        modelMap.addAttribute("length", length);
+        modelMap.addAttribute("rating", rating);
+        modelMap.addAttribute("releasedate", releasedate);
+        modelMap.addAttribute("youtube", youtube);
+
+        if (title == null || description == null || director == null || image == null || length == null || (Double) rating == null || releasedate == null || youtube == null) {
+            modelMap.addAttribute("error", "All fields are required!");
+        } else {
+            Movie movie = new Movie();
+            movie.setTitle(title);
+            movie.setDescription(description);
+            movie.setDirector(director);
+            movie.setImage(image);
+            movie.setLength(length);
+            movie.setRating(rating);
+            movie.setReleasedate(releasedate);
+            movie.setYoutube(youtube);
+
+            movieDAO.createMovie(movie);
+            modelMap.addAttribute("success", "Item successfully added!");
+        }
+        return "create";
     }
 
-    //updating movie
-    @RequestMapping(value = "/updateMovie", method = RequestMethod.PUT)
-    public ModelAndView updateMovie(@ModelAttribute Movie movie) {
-        movieDAO.editMovie(movie);
-        return new ModelAndView("redirect:/");
-    }
 
     //deleting movie
     @RequestMapping(value = "/deleteMovie", method = RequestMethod.DELETE)
