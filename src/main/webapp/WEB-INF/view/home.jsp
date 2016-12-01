@@ -5,21 +5,18 @@
   Time: 10:25
   To change this template use File | Settings | File Templates.
 --%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
+
 <!doctype html>
 <html lang="en">
 <head>
 
     <%@include file="../snippet/head.jspf" %>
 
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
+
     <title>StarWars Timeline</title>
 
-    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/home.js"></script>
 </head>
 <body>
 
@@ -29,14 +26,13 @@
 
 <c:if test="${not empty listMovies}">
     <div class="timeline">
-
         <c:forEach var="movie" items="${listMovies}" varStatus="status">
             <div class="row test-wide">
                 <div class="col-sm-6 col-md-4 movie-wrapper">
                     <div class="thumbnail">
                         <div class="image-holder">
                             <!-- <img src="${movie.image}" alt="..."> -->
-                            <img src="resources/movie1.jpg" alt="...">
+                            <img src="${pageContext.request.contextPath}/resources/images/movie1.jpg" alt="...">
                             <button type="button" class="btn btn-primary trailer-button" data-toggle="modal"
                                     data-target="#myModal-${status.index}">
                                 Trailer
@@ -93,9 +89,12 @@
                 </div>
             </div>
         </c:forEach>
-
     </div>
 </c:if>
+
+<footer class="navbar-fixed-bottom">
+    <%@include file="../snippet/footer.jspf" %>
+</footer>
 
 </body>
 </html>

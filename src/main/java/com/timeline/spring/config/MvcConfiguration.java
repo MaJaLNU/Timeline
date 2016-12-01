@@ -1,5 +1,7 @@
 package com.timeline.spring.config;
 
+import com.timeline.spring.dao.admin.AdminDAO;
+import com.timeline.spring.dao.admin.AdminDAOImplement;
 import com.timeline.spring.dao.movie.MovieDAO;
 import com.timeline.spring.dao.movie.MovieDAOImpl;
 import org.springframework.context.annotation.Bean;
@@ -53,9 +55,13 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
         return dataSource;
     }
 
-
     @Bean
     public MovieDAO getMovieDAO() {
         return new MovieDAOImpl(getDataSource());
+    }
+
+    @Bean
+    public AdminDAO getAdminDAO() {
+        return new AdminDAOImplement(getDataSource());
     }
 }

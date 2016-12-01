@@ -1,0 +1,19 @@
+.dashboard {
+    margin: 10px;
+}
+
+.list-of-movies {
+    float: left;
+    min-width: 250px;
+}
+
+.center-table {
+    float: left;
+    padding-left: 20px;
+    width: 50%;
+}
+
+.delete-movie-btn {
+    float: right;
+    margin-top: -49px;
+}

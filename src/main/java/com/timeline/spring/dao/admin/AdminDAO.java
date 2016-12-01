@@ -1,10 +1,10 @@
 package com.timeline.spring.dao.admin;
 
-import com.timeline.spring.model.Admin;
+import java.sql.SQLException;
 
 /**
  * Created by damma on 19.11.2016.
  */
 public interface AdminDAO {
-    Admin findAdmin(String mail);
+    boolean login(String mail, String password) throws SQLException;
 }
