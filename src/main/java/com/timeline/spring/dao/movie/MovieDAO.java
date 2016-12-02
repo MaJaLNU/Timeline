@@ -10,8 +10,8 @@ import java.util.List;
 public interface MovieDAO {
     List<Movie> getAllMovies();
 
+    Movie getMovie(long id);
     void deleteMovie(long id);
-    void createMovie(Movie movie);
 
-    void editMovie(Movie movieUpdate);
+    Movie createOrUpdateMovie(Movie movie);
 }

@@ -4,13 +4,12 @@ import com.timeline.spring.dao.admin.AdminDAO;
 import com.timeline.spring.model.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 
 /**
@@ -18,20 +17,19 @@ import java.sql.SQLException;
  */
 
 @Controller
-@SessionAttributes("admin")
+@SessionAttributes("user")
 public class AdminController {
 
     @Autowired
     private AdminDAO adminDAO;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @GetMapping(value = "/login")
     public ModelAndView showLoginForm() {
-        ModelAndView model = new ModelAndView("login", "command", new Admin());
-        return model;
+        return new ModelAndView("login", "command", new Admin());
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView verifyLogin(HttpServletRequest request, @ModelAttribute("admin") Admin admin) throws SQLException {
+    @PostMapping(value = "/login")
+    public ModelAndView verifyLogin(@ModelAttribute Admin admin) throws SQLException {
 
         ModelAndView model = new ModelAndView();
 
@@ -41,9 +39,10 @@ public class AdminController {
             return model;
         }
 
-        model.setViewName("dashboard");
+        model.setViewName("redirect:/dashboard");
         //set Session with admin
-        request.getSession().setAttribute("user", admin);
+        model.addObject("user", admin);
+
         return model;
     }
 }

@@ -31,8 +31,9 @@
                 <div class="col-sm-6 col-md-4 movie-wrapper">
                     <div class="thumbnail">
                         <div class="image-holder">
-                            <!-- <img src="${movie.image}" alt="..."> -->
-                            <img src="${pageContext.request.contextPath}/resources/images/movie1.jpg" alt="...">
+                            <picture>
+                                <img src="data:image/png;base64, ${movie.image}" alt="Image">
+                            </picture>
                             <button type="button" class="btn btn-primary trailer-button" data-toggle="modal"
                                     data-target="#myModal-${status.index}">
                                 Trailer

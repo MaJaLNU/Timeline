@@ -41,7 +41,6 @@
                             Sign in
                         </button>
                     </form:form>
-                    <a href="dashboard.jsp">link</a>
                 </div>
                 <a href="${pageContext.request.contextPath}" class="text-center new-account">Back</a>
             </div>

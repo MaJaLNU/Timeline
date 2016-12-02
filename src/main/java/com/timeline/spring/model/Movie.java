@@ -10,10 +10,10 @@ import java.sql.Date;
  */
 public class Movie {
 
-    private long id;
+    private Long id;
     private String title;
     private String image;
-    private double rating;
+    private Double rating;
     private Date releasedate;
     private String length;
     private String director;
@@ -39,11 +39,11 @@ public class Movie {
         return new Movie();
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,11 +63,11 @@ public class Movie {
         this.image = image;
     }
 
-    public double getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
