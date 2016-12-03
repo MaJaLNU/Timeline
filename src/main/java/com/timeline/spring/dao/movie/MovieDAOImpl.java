@@ -47,7 +47,7 @@ public class MovieDAOImpl implements MovieDAO {
 
     public Movie createOrUpdateMovie(final Movie movie) {
 
-        if ((Long) movie.getId() == null) {
+        if (movie.getId() == null) {
             final String sql = "insert into movie " +
                     "(title" +
                     ", description" +
@@ -78,6 +78,7 @@ public class MovieDAOImpl implements MovieDAO {
                     keyHolder);
 
             Long newId = keyHolder.getKey().longValue();
+            System.out.println("Insert Movie with ID = " + newId);
             return this.getMovie(newId);
 
         } else {

@@ -32,7 +32,7 @@
     <div class="page-header">
         <h1>Admin Dashboard
             <c:choose>
-                <c:when test="${not empty movie}">
+                <c:when test="${empty movie}">
                     <small> create new movie</small>
                 </c:when>
                 <c:otherwise>
@@ -56,13 +56,12 @@
     </div>
 
     <div class="center-table">
-        <form:form class="form-horizontal" method="POST" modelAttribute="movieForm"
-                   action="${pageContext.request.contextPath}/saveMovie">
+        <form:form class="form-horizontal" method="POST" modelAttribute="movieForm">
             <div class="form-group">
                 <label for="title" class="col-sm-2 control-label">Title</label>
                 <div class="col-sm-10">
                     <form:input type="text" class="form-control" path="title" id="title" placeholder="title"
-                                value="${movie.title}"/>
+                                value="${movie.title}" required="required"/>
                 </div>
             </div>
             <div class="form-group">
@@ -70,35 +69,35 @@
                 <div class="col-sm-10">
                     <form:input type="number" step="0.1" path="rating" class="form-control" id="rating"
                                 placeholder="rating"
-                                min="0" max="10" value="${movie.rating}"/>
+                                min="0" max="10" value="${movie.rating}" required="required"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="releaseYear" class="col-sm-2 control-label">Release Year</label>
                 <div class="col-sm-10">
                     <form:input type="date" class="form-control" path="releasedate" id="releaseYear"
-                                placeholder="release year" value="${movie.releasedate}"/>
+                                placeholder="release year" value="${movie.releasedate}" required="required"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="length" class="col-sm-2 control-label">Length</label>
                 <div class="col-sm-10">
                     <form:input type="text" path="length" class="form-control" id="length" placeholder="length"
-                                value="${movie.length}"/>
+                                value="${movie.length}" required="required"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="director" class="col-sm-2 control-label">Director</label>
                 <div class="col-sm-10">
                     <form:input type="text" path="director" class="form-control" id="director" placeholder="director"
-                                value="${movie.director}"/>
+                                value="${movie.director}" required="required"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="youtube" class="col-sm-2 control-label">Youtube-Code</label>
                 <div class="col-sm-10">
                     <form:input type="text" path="youtube" class="form-control" id="youtube" placeholder="frdj1zb9sMY"
-                                value="${movie.youtube}"/>
+                                value="${movie.youtube}" required="required"/>
                 </div>
             </div>
             <div class="form-group">
@@ -112,29 +111,33 @@
                 <label for="description"
                        class="col-sm-2 control-label">Description</label>
                 <div class="col-sm-10">
-                    <form:textarea maxlength="200" class="form-control" path="description" rows="3" id="description"/>
+                    <form:textarea maxlength="200" class="form-control" value="${movie.description}" path="description"
+                                   rows="3" id="description" required="required"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-success">Save</button>
+                    <button formaction="${pageContext.request.contextPath}/saveMovie" type="submit"
+                            class="btn btn-success movie-btn">Save
+                    </button>
                 </div>
+                <c:if test="${not empty movie}">
+                    <button formaction="${pageContext.request.contextPath}/deleteMovie/${movie.id}" type="submit"
+                            class="btn btn-danger movie-btn">Delete movie
+                    </button>
+                </c:if>
             </div>
-        </form:form>
-
-        <form:form class="form-horizontal" method="POST" action="${pageContext.request.contextPath}/deleteMovie">
-            <button type="button" class="btn btn-danger delete-movie-btn">Delete movie</button>
         </form:form>
     </div>
 </div>
-
-<footer class="navbar-fixed-bottom">
-    <%@include file="../snippet/footer.jspf" %>
-</footer>
-
+<!--
+<div class="footer">
+    <%//@include file="../snippet/footer.jspf" %>
+</div>
+-->
 <script src="${pageContext.request.contextPath}/resources/js/image-upload.js"></script>
-<script src="//wzrd.in/standalone/blob-util@latest"></script>
+<script src="${pageContext.request.contextPath}/resources/js/blob.js"></script>
 </body>
 
 </html>

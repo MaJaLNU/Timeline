@@ -13,7 +13,16 @@
     width: 50%;
 }
 
-.delete-movie-btn {
+.movie-btn {
     float: right;
-    margin-top: -49px;
+    margin-left: 9.6em;
+    margin-top: 1em;
 }
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+

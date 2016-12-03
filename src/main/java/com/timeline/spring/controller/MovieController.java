@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
@@ -22,7 +25,7 @@ public class MovieController {
     private MovieDAO movieDAO;
 
     // Display all movies
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public ModelAndView getMovieList() throws IOException {
 
         ModelAndView model = new ModelAndView();
@@ -36,8 +39,10 @@ public class MovieController {
 
     //inserting or updating movie
     @PostMapping(value = "/saveMovie")
-    public String saveMovie(@ModelAttribute("movieForm") Movie movie, BindingResult result, Model model) {
-
+    public String saveMovie(@ModelAttribute("movieForm") Movie movie, Model model) {
+        System.out.println("MOVIEID: " + movie.getId());
+        //TODO Movie from gibt keine id zurück für update: <!-- <form:input path="movieid" hidden="true" value="${movie.id}"/> -->
+        model.addAttribute("movieid", movie.getId());
         model.addAttribute("title", movie.getTitle());
         model.addAttribute("description", movie.getDescription());
         model.addAttribute("director", movie.getDirector());
@@ -54,17 +59,19 @@ public class MovieController {
             return "redirect:/dashboard/" + movie.getId();
         } else {
             Movie m = movieDAO.createOrUpdateMovie(movie);
-            model.addAttribute("success", "Item successfully added!");
+            model.addAttribute("success", "Item successfully saved/updated!");
             return "redirect:/dashboard/" + m.getId();
         }
     }
 
 
     //deleting movie
-    @RequestMapping(value = "/deleteMovie", method = RequestMethod.DELETE)
-    public ModelAndView deleteContact(@RequestParam("movie") long movieId) {
-        movieDAO.deleteMovie(movieId);
-        return new ModelAndView("redirect:/");
+    @PostMapping(value = "/deleteMovie/{movieID}")
+    public String deleteMovie(@PathVariable("movieID") long id, @ModelAttribute("movieForm") Movie movie, BindingResult result, Model model) {
+        movieDAO.deleteMovie(id);
+        model.addAttribute("listMovies", movieDAO.getAllMovies());
+        model.addAttribute("deleteError", "Error while deleting.");
+        return "redirect:/dashboard";
     }
 
 }
