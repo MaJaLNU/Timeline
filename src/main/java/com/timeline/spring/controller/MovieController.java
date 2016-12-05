@@ -40,9 +40,7 @@ public class MovieController {
     //inserting or updating movie
     @PostMapping(value = "/saveMovie")
     public String saveMovie(@ModelAttribute("movieForm") Movie movie, Model model) {
-        System.out.println("MOVIEID: " + movie.getId());
-        //TODO Movie from gibt keine id zurück für update: <!-- <form:input path="movieid" hidden="true" value="${movie.id}"/> -->
-        model.addAttribute("movieid", movie.getId());
+        System.out.println("Entered /savemovie");
         model.addAttribute("title", movie.getTitle());
         model.addAttribute("description", movie.getDescription());
         model.addAttribute("director", movie.getDirector());
@@ -58,7 +56,10 @@ public class MovieController {
             model.addAttribute("error", "All fields are required!");
             return "redirect:/dashboard/" + movie.getId();
         } else {
+            List<Movie> moviesList = movieDAO.getAllMovies();
+            model.addAttribute("listMovies", moviesList);
             Movie m = movieDAO.createOrUpdateMovie(movie);
+            model.addAttribute("movieid", m.getId());
             model.addAttribute("success", "Item successfully saved/updated!");
             return "redirect:/dashboard/" + m.getId();
         }

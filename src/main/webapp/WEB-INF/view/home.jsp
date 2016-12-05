@@ -32,7 +32,7 @@
                     <div class="thumbnail">
                         <div class="image-holder">
                             <picture>
-                                <img src="data:image/png;base64, ${movie.image}" alt="Image">
+                                <img class="movie-image" src="data:image/png;base64, ${movie.image}" alt="Image">
                             </picture>
                             <button type="button" class="btn btn-primary trailer-button" data-toggle="modal"
                                     data-target="#myModal-${status.index}">
@@ -81,8 +81,11 @@
                                         <td>Director</td>
                                         <td>${movie.director}</td>
                                     </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>${movie.description}</td>
+                                    </tr>
                                 </table>
-                                <p>${movie.description}</p>
                             </div>
                         </div>
                         <div class="clear"></div>

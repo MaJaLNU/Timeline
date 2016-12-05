@@ -46,7 +46,7 @@ public class MovieDAOImpl implements MovieDAO {
     }
 
     public Movie createOrUpdateMovie(final Movie movie) {
-
+        System.out.println("Entered createupdate");
         if (movie.getId() == null) {
             final String sql = "insert into movie " +
                     "(title" +
@@ -67,7 +67,7 @@ public class MovieDAOImpl implements MovieDAO {
                                               ps.setString(1, movie.getTitle());
                                               ps.setString(2, movie.getDescription());
                                               ps.setDouble(3, movie.getRating());
-                                              ps.setDate(4, movie.getReleasedate());
+                                              ps.setString(4, movie.getReleasedate());
                                               ps.setString(5, movie.getDirector());
                                               ps.setString(6, movie.getLength());
                                               ps.setString(7, movie.getYoutube());

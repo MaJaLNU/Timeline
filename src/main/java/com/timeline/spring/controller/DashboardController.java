@@ -25,6 +25,10 @@ public class DashboardController {
     @GetMapping(value = "/dashboard")
     public String getMovieList(Model model) throws IOException {
 
+        if (!model.containsAttribute("user")) {
+            return "redirect:/login";
+        }
+
         if (model.containsAttribute("user")) {
             //Get movies from db
             List<Movie> listMovies = movieDAO.getAllMovies();
@@ -32,18 +36,23 @@ public class DashboardController {
             model.addAttribute("listMovies", listMovies);
             model.addAttribute("movieForm", movie);
 
-            return "/dashboard";
+            return "dashboard";
         } else {
-            return "/login";
+            return "login";
         }
     }
 
     @GetMapping(value = "/dashboard/{movieID}")
     public String getMovie(@PathVariable("movieID") long id, Model model) {
+
+        if (!model.containsAttribute("user")) {
+            return "redirect:/login";
+        }
+
         model.addAttribute("listMovies", movieDAO.getAllMovies());
         Movie movie = movieDAO.getMovie(id);
         model.addAttribute("movie", movie);
         model.addAttribute("movieForm", movie);
-        return "/dashboard";
+        return "dashboard";
     }
 }

@@ -100,6 +100,15 @@
                                 value="${movie.youtube}" required="required"/>
                 </div>
             </div>
+
+            <div class="form-group" hidden>
+                <label for="movieId" class="col-sm-2 control-label">Movie Id</label>
+                <div class="col-sm-10">
+                    <form:input type="text" path="id" class="form-control" id="movieId" placeholder="movieId"
+                                value="${movie.id}"/>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label for="image" class="col-sm-2 control-label">Image</label>
                 <div class="col-sm-10">
@@ -111,8 +120,8 @@
                 <label for="description"
                        class="col-sm-2 control-label">Description</label>
                 <div class="col-sm-10">
-                    <form:textarea maxlength="200" class="form-control" value="${movie.description}" path="description"
-                                   rows="3" id="description" required="required"/>
+                    <form:textarea maxlength="1000" class="form-control" value="${movie.description}" path="description"
+                                   id="description" required="required"/>
                 </div>
             </div>
 
@@ -122,12 +131,17 @@
                             class="btn btn-success movie-btn">Save
                     </button>
                 </div>
-                <c:if test="${not empty movie}">
-                    <button formaction="${pageContext.request.contextPath}/deleteMovie/${movie.id}" type="submit"
-                            class="btn btn-danger movie-btn">Delete movie
-                    </button>
-                </c:if>
             </div>
+            <c:if test="${not empty movie}">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+
+                        <button formaction="${pageContext.request.contextPath}/deleteMovie/${movie.id}" type="submit"
+                                class="btn btn-danger movie-btn">Delete movie
+                        </button>
+                    </div>
+                </div>
+            </c:if>
         </form:form>
     </div>
 </div>

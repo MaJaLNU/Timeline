@@ -20,7 +20,7 @@ public class MovieRowMapper implements RowMapper {
         movie.setLength(rs.getString("length"));
         movie.setImage(rs.getString("image"));
         movie.setRating(rs.getDouble("rating"));
-        movie.setReleasedate(rs.getDate("releasedate"));
+        movie.setReleasedate(rs.getString("releasedate"));
         movie.setYoutube(rs.getString("youtube"));
         return movie;
     }

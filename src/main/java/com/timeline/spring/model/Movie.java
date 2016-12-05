@@ -3,8 +3,6 @@ package com.timeline.spring.model;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import java.sql.Date;
-
 /**
  * Created by damma on 19.11.2016.
  */
@@ -14,13 +12,13 @@ public class Movie {
     private String title;
     private String image;
     private Double rating;
-    private Date releasedate;
+    private String releasedate;
     private String length;
     private String director;
     private String youtube;
     private String description;
 
-    public Movie(long id, String title, String picture, double rating, Date release, String length, String director, String youtube, String description) {
+    public Movie(long id, String title, String picture, double rating, String release, String length, String director, String youtube, String description) {
         this.id = id;
         this.title = title;
         this.image = picture;
@@ -71,11 +69,11 @@ public class Movie {
         this.rating = rating;
     }
 
-    public Date getReleasedate() {
+    public String getReleasedate() {
         return releasedate;
     }
 
-    public void setReleasedate(Date releasedate) {
+    public void setReleasedate(String releasedate) {
         this.releasedate = releasedate;
     }
 

@@ -41,6 +41,11 @@
                             Sign in
                         </button>
                     </form:form>
+                    <c:if test="${not empty loginError}">
+                        <p class="bg-danger text-center">
+                                ${loginError}
+                        </p>
+                    </c:if>
                 </div>
                 <a href="${pageContext.request.contextPath}" class="text-center new-account">Back</a>
             </div>
