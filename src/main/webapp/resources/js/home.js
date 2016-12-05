@@ -26,10 +26,28 @@ $(document).ready(function () {
     resize();
 });
 function resize() {
+    // set the height of content according to the navigation bar
     var navbarHeight = $(".navbar")[0].clientHeight;
     $(".test-wide")[0].style.height = (window.innerHeight - navbarHeight) + "px";
 
     $(".timeline")[0].style.paddingTop = navbarHeight + "px";
+
+    // set the max height of the image and description according to the height of content
+    var imageHeight = (window.innerHeight - navbarHeight) * 0.67;
+    var maxImageWidth = $(".image-holder")[0].clientWidth;
+    $(".thumbnail img").each(function () {
+        $(this).css("max-height", imageHeight);
+        $(this).css("max-width", maxImageWidth);
+    });
+    $(".caption").each(function () {
+        $(this).css("height", imageHeight);
+    });
+
+    // set the max height of the table to not overflow the thumbnail
+    var tableMaxHeight = $(".caption").height() - $("h3").outerHeight(true) - parseInt($("h3").css("margin-top"));
+    $(".table-responsive").each(function () {
+        $(this).css("max-height", tableMaxHeight);
+    });
 }
 window.onresize = function () {
     resize();
