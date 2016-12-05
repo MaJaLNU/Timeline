@@ -68,15 +68,14 @@
                 <label for="rating" class="col-sm-2 control-label">Rating</label>
                 <div class="col-sm-10">
                     <form:input type="number" step="0.1" path="rating" class="form-control" id="rating"
-                                placeholder="rating"
-                                min="0" max="10" value="${movie.rating}" required="required"/>
+                                placeholder="rating" min="0" max="10" value="${movie.rating}" required="required"/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="releaseYear" class="col-sm-2 control-label">Release Year</label>
                 <div class="col-sm-10">
-                    <form:input type="date" class="form-control" path="releasedate" id="releaseYear"
-                                placeholder="release year" value="${movie.releasedate}" required="required"/>
+                    <form:input type="number" class="form-control" path="releasedate" id="releaseYear"
+                                placeholder="release year" min="1900" max="2017" value="${movie.releasedate}" required="required"/>
                 </div>
             </div>
             <div class="form-group">
@@ -121,7 +120,7 @@
                        class="col-sm-2 control-label">Description</label>
                 <div class="col-sm-10">
                     <form:textarea maxlength="1000" class="form-control" value="${movie.description}" path="description"
-                                   id="description" required="required"/>
+                                   id="description" rows="5" required="required"/>
                 </div>
             </div>
 
