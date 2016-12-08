@@ -41,6 +41,7 @@ html {
 .image-holder {
     position: relative;
     width: 50%;
+    height: 100%;
     float: left;
 }
 
@@ -56,4 +57,13 @@ html {
 .trailer-button:hover, .trailer-button:focus {
     background-color: #000;
     border-color: #333;
+}
+
+.navbar-fixed-bottom {
+    padding-top: 3em;
+}
+
+.movie-image {
+    width: 100%;
+    height: 100%;
 }

@@ -11,7 +11,7 @@
 
     <%@include file="../snippet/head.jspf" %>
 
-    <link href="${pageContext.request.contextPath}/resources/css/style-login.css" rel="stylesheet">
+    <link href="${context}/resources/css/style-login.css" rel="stylesheet">
 
     <title>Login - Timeline</title>
 
@@ -31,9 +31,7 @@
                     <img class="profile-img"
                          src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
                          alt="">
-                    <form:form class="form-signin" method="post" action="${pageContext.request.contextPath}/login">
-                        <!-- to display error message from action method if any -->
-                        <form:errors/>
+                    <form:form class="form-signin" method="post" action="${context}/login">
                         <form:input path="email" type="email" class="form-control" placeholder="Email" required="true"
                                     autofocus="true"/>
                         <form:password path="password" class="form-control" placeholder="Password" required="true"/>
@@ -41,15 +39,19 @@
                             Sign in
                         </button>
                     </form:form>
-                    <a href="dashboard.jsp">link</a>
+                    <c:if test="${not empty loginError}">
+                        <div class="form-signin alert alert-danger text-center" role="alert">
+                                ${loginError}
+                        </div>
+                    </c:if>
                 </div>
-                <a href="${pageContext.request.contextPath}" class="text-center new-account">Back</a>
+                <a href="${context}" class="text-center new-account">Back</a>
             </div>
         </div>
     </div>
 </div>
 
-<footer class="navbar-fixed-bottom">
+<footer class="footer">
     <%@include file="../snippet/footer.jspf" %>
 </footer>
 

@@ -1,11 +1,15 @@
 package com.timeline.spring.dao.movie;
 
 import com.timeline.spring.model.Movie;
+import com.timeline.spring.util.MovieRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -22,25 +26,16 @@ public class MovieDAOImpl implements MovieDAO {
     }
 
     public List<Movie> getAllMovies() {
-        String sql = "select * from movie order by releasedate asc";
-        List<Movie> movies = jdbcTemplateObject.query(sql, new RowMapper<Movie>() {
-
-            public Movie mapRow(ResultSet rs, int rowNum) throws SQLException {
-                Movie movie = new Movie();
-                movie.setId(rs.getLong("id"));
-                movie.setTitle(rs.getString("title"));
-                movie.setDescription(rs.getString("description"));
-                movie.setDirector(rs.getString("director"));
-                movie.setLength(rs.getString("length"));
-                movie.setImage(rs.getString("image"));
-                movie.setRating(rs.getDouble("rating"));
-                movie.setReleasedate(rs.getDate("releasedate"));
-                movie.setYoutube(rs.getString("youtube"));
-                return movie;
-            }
-        });
+        String sql = "select * from movie order by releasedate DESC";
+        List<Movie> movies = jdbcTemplateObject.query(sql, new MovieRowMapper());
 
         return movies;
+    }
+
+    public Movie getMovie(long id) {
+        String sql = "select * from movie where id = ?";
+        Movie movie = (Movie) jdbcTemplateObject.queryForObject(sql, new Object[]{id}, new MovieRowMapper());
+        return movie;
     }
 
     public void deleteMovie(long id) {
@@ -50,53 +45,65 @@ public class MovieDAOImpl implements MovieDAO {
         return;
     }
 
-    public void createMovie(Movie movie) {
-        String sql = "insert into movie " +
-                "(title" +
-                ", description" +
-                ", rating" +
-                ", releasedate" +
-                ", director" +
-                ", length" +
-                ", youtube" +
-                ", image) " +
-                "values (?, ?, ?, ?, ?, ?, ?, ?)";
+    public Movie createOrUpdateMovie(final Movie movie) {
+        System.out.println("Entered createupdate");
+        if (movie.getId() == null) {
+            final String sql = "insert into movie " +
+                    "(title" +
+                    ", description" +
+                    ", rating" +
+                    ", releasedate" +
+                    ", director" +
+                    ", length" +
+                    ", youtube" +
+                    ", image) " +
+                    "values (?, ?, ?, ?, ?, ?, ?, ?)";
 
-        jdbcTemplateObject.update(sql
-                , movie.getTitle()
-                , movie.getDescription()
-                , movie.getRating()
-                , movie.getReleasedate()
-                , movie.getDirector()
-                , movie.getLength()
-                , movie.getYoutube()
-                , movie.getImage());
-        System.out.println("Created Movie = " + movie.toString());
-        return;
-    }
+            KeyHolder keyHolder = new GeneratedKeyHolder();
+            jdbcTemplateObject.update(new PreparedStatementCreator() {
+                                          public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                                              PreparedStatement ps =
+                                                      connection.prepareStatement(sql, new String[]{"id"});
+                                              ps.setString(1, movie.getTitle());
+                                              ps.setString(2, movie.getDescription());
+                                              ps.setDouble(3, movie.getRating());
+                                              ps.setString(4, movie.getReleasedate());
+                                              ps.setString(5, movie.getDirector());
+                                              ps.setString(6, movie.getLength());
+                                              ps.setString(7, movie.getYoutube());
+                                              ps.setString(8, movie.getImage());
+                                              return ps;
+                                          }
+                                      },
+                    keyHolder);
 
-    public void editMovie(Movie movieUpdate) {
-        String sql = "update movie" +
-                " set title = ?" +
-                ", description = ?" +
-                ", rating = ?" +
-                ", releasedate = ?" +
-                ", director = ?" +
-                ", length = ?" +
-                ", youtube = ?" +
-                ", image = ?" +
-                " where id = ?";
-        jdbcTemplateObject.update(sql
-                , movieUpdate.getTitle()
-                , movieUpdate.getDescription()
-                , movieUpdate.getRating()
-                , movieUpdate.getReleasedate()
-                , movieUpdate.getDirector()
-                , movieUpdate.getLength()
-                , movieUpdate.getYoutube()
-                , movieUpdate.getImage()
-                , movieUpdate.getId());
-        System.out.println("Updated Movie with ID = " + movieUpdate.getId());
-        return;
+            Long newId = keyHolder.getKey().longValue();
+            System.out.println("Insert Movie with ID = " + newId);
+            return this.getMovie(newId);
+
+        } else {
+            String sql = "update movie" +
+                    " set title = ?" +
+                    ", description = ?" +
+                    ", rating = ?" +
+                    ", releasedate = ?" +
+                    ", director = ?" +
+                    ", length = ?" +
+                    ", youtube = ?" +
+                    ", image = ?" +
+                    " where id = ?";
+            jdbcTemplateObject.update(sql
+                    , movie.getTitle()
+                    , movie.getDescription()
+                    , movie.getRating()
+                    , movie.getReleasedate()
+                    , movie.getDirector()
+                    , movie.getLength()
+                    , movie.getYoutube()
+                    , movie.getImage()
+                    , movie.getId());
+            System.out.println("Updated Movie with ID = " + movie.getId());
+            return movie;
+        }
     }
 }

@@ -1,6 +1,7 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 
@@ -25,11 +26,15 @@
 
 <link rel="shortcut icon" href="">
 
+<!-- context -->
+<c:set var="context" value="${pageContext.request.contextPath}"/>
+
 <!-- CSS -->
 <!-- Bootstrap -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="${context}/resources/css/bootstrap.min.css">
 
 <!-- JavaScript imports -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<script src="${context}/resources/js/bootstrap.min.js"></script>
