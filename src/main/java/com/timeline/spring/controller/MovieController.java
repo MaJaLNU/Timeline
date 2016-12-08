@@ -50,19 +50,14 @@ public class MovieController {
         model.addAttribute("releasedate", movie.getReleasedate());
         model.addAttribute("youtube", movie.getYoutube());
 
-        if (movie.getTitle() == null || movie.getDescription() == null || movie.getDirector() == null || movie.getImage() == null ||
-                movie.getLength() == null || movie.getRating() == null || movie.getReleasedate() == null ||
-                movie.getYoutube() == null) {
-            model.addAttribute("error", "All fields are required!");
-            return "redirect:/dashboard/" + movie.getId();
-        } else {
-            List<Movie> moviesList = movieDAO.getAllMovies();
-            model.addAttribute("listMovies", moviesList);
-            Movie m = movieDAO.createOrUpdateMovie(movie);
-            model.addAttribute("movieid", m.getId());
-            model.addAttribute("success", "Item successfully saved/updated!");
-            return "redirect:/dashboard/" + m.getId();
-        }
+        List<Movie> moviesList = movieDAO.getAllMovies();
+        model.addAttribute("listMovies", moviesList);
+
+        Movie m = movieDAO.createOrUpdateMovie(movie);
+        model.addAttribute("movieid", m.getId());
+        model.addAttribute("success", "Item successfully saved/updated!");
+        return "redirect:/dashboard/" + m.getId();
+
     }
 
 
@@ -71,7 +66,7 @@ public class MovieController {
     public String deleteMovie(@PathVariable("movieID") long id, @ModelAttribute("movieForm") Movie movie, BindingResult result, Model model) {
         movieDAO.deleteMovie(id);
         model.addAttribute("listMovies", movieDAO.getAllMovies());
-        model.addAttribute("deleteError", "Error while deleting.");
+        model.addAttribute("delete", "Item deleted.");
         return "redirect:/dashboard";
     }
 

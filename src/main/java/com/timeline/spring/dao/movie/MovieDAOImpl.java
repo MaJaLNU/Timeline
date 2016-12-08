@@ -26,7 +26,7 @@ public class MovieDAOImpl implements MovieDAO {
     }
 
     public List<Movie> getAllMovies() {
-        String sql = "select * from movie order by releasedate asc";
+        String sql = "select * from movie order by releasedate DESC";
         List<Movie> movies = jdbcTemplateObject.query(sql, new MovieRowMapper());
 
         return movies;
