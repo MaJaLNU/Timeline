@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 -- Datenbank: `starwarstimeline`
 --
 
-DROP TABLE movie;
-DROP TABLE user;
+DROP TABLE IF EXISTS movie;
+DROP TABLE IF EXISTS user;
 -- --------------------------------------------------------
 
 --
