@@ -134,7 +134,7 @@
                 <div class="col-sm-10">
                     <form:textarea maxlength="1000" class="form-control" placeholder="..." value="${movie.description}"
                                    path="description"
-                                   id="description" required="required"/>
+                                   id="description" rows="5" required="required"/>
                 </div>
             </div>
 
