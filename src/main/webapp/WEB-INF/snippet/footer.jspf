@@ -1,13 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center">
-            <ul class="list-inline">
-                <li class="footer-menu-divider"></li>
-                <li><a target="_blank" href="https://github.com/MaJaLNU/Timeline"><i class="fa fa-2x fa-github"></i></a>
-                </li>
-                <li class="footer-menu-divider"></li>
-            </ul>
-            <p class="copyright text-muted small">&copy; 2016 LNU</p>
+            <p class="copyright text-muted small">&copy; 2016 Weiss & Dammann</p>
+            <a target="_blank" href="https://github.com/MaJaLNU/Timeline"><span class="glyphicon glyphicon-floppy-save"
+                                                                                aria-hidden="true"></span></a>
         </div>
     </div>
 </div>
