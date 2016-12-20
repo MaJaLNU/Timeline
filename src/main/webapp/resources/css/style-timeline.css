@@ -16,6 +16,10 @@ html, body {
     text-align: center
 }
 
+a {
+    cursor: pointer;
+}
+
 .center-myshit {
     position: absolute;
     top: 50%;

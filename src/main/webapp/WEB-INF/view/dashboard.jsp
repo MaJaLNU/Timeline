@@ -45,7 +45,7 @@
             <c:if test="${not empty listMovies}">
                 <c:forEach var="movie" items="${listMovies}" varStatus="status">
                     <a href="${context}/dashboard/${movie.id}"
-                       class="list-group-item">(${movie.releasedate}) ${movie.title}</a>
+                       class="list-group-item" id="${movie.id}">(${movie.releasedate}) ${movie.title}</a>
                 </c:forEach>
             </c:if>
         </div>
