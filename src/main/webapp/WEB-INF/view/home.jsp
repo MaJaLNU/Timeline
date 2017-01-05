@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="row">
                                     <p class="pull-left">
-                                        <i class="glyphicon glyphicon-thumbs-up"></i> Ratring: ${movie.rating}
+                                        <i class="glyphicon glyphicon-thumbs-up"></i> Rating: ${movie.rating}
                                     </p>
                                     <p class="pull-right">
                                         <i class="glyphicon glyphicon-user"></i> Director:
